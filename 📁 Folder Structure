@@ -1,0 +1,6 @@
+phishing_url_detector/
+├── model_trainer.py
+├── predict_url.py
+├── url_features.py
+├── dataset.csv
+└── README.md
