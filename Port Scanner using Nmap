@@ -1,0 +1,19 @@
+# port_scanner.py
+
+import nmap
+
+def scan(target):
+    scanner = nmap.PortScanner()
+    print(f"\n🔍 Scanning {target}...\n")
+    scanner.scan(hosts=target, arguments='-p 1-1024')
+    for host in scanner.all_hosts():
+        print(f"Target: {host}")
+        for proto in scanner[host].all_protocols():
+            ports = scanner[host][proto].keys()
+            for port in sorted(ports):
+                state = scanner[host][proto][port]['state']
+                print(f"Port {port} is {state}")
+
+if __name__ == "__main__":
+    target = input("Enter target IP/domain: ")
+    scan(target)
